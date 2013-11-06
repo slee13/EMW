@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+	
+<!--Team StephAnnie: Stephanie Lee and Annie Han
+Filename: EMW/index.html
+Date Last Edited: 29 April 2013
+Time Last Edited: 4:06 PM
+
+Description: EMW website
+Uses javascript and jquery to make the one page website dynamic, engaging, and comprehensive.
+Website updates will mostly be made for the upcoming events.  All other elements of the page
+should be relatively static.
+Contact form at the end of the website has form validation and currently sends all emails to
+slee13@wellesley.edu using "/cgi-bin/eform.cgi"
+This website was made for the CS110, Spring 2013, final project.
+
+Related Documents:
+changes.html: all changes made from initial design proposal, P2.html
+readMe.txt: all citations and sources of outside code
+event.part: file for future web managers to use to update most current event
+
+Edits made 5/6/13 by Steph:
+-Contact Form validation and legibility: changed font color for validation errors to be readable
+and changed validation so that only valid emails can be inputed
+
+Edits made 5/6/13 by Annie:
+-Changed slideshow dimensions for better varying window sizes
+-Changed navbar to check for window height to determine when to auto-stick to top of the page
+-->
+
+<head>
+	<meta charset='UTF-8'>
+	<title>EMW</title>
+	<link rel='stylesheet' href='style.css'>
+		
+	<!--Custom font via Google Fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js'></script>
+	
+	<!--Additional javascript and jQuery plug-ins
+	cited in readMe.txt-->
+	<script src='js/jquery.color-RGBa-patch.js'></script>
+	<script type="text/javascript" src="js/simplemodal.js"></script>
+	<script type="text/javascript" src="js/smoothscroll.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/jquery.placeheld.min.js"></script>
+	
+	<!--Javascript and jQuery Functions-->
+	<script>
+	    $(document).ready(function() {
+		
+		//method for hovering defined below
+		hover();
+		
+		//method for form validating using validate plug in
+		$('form').validate({
+		    rules: {
+			email: {
+			    required: true,
+			    email: true
+			}
+		    },
+		    messages: {
+			full_name: "Please enter full name",
+			email: "Please enter valid email"
+		    }
+		});
+		
+		//----------------"Sticky NavBar effect"----------------//
+		//*** try moving this into its own method outside of doc.ready
+		//Calculate the height of <header>
+		//Use outerHeight() instead of height() when there is padding
+		var aboveHeight = $('#header').outerHeight();
+		//when scrolling
+		$(window).scroll(function(){
+ 
+			//if scrolled down more than the headers height
+			if ($(window).scrollTop() > aboveHeight){
+ 
+			// if yes, add fixed class to the <nav>
+			// add padding top to the #content 
+			//(value is same as the height of the nav)
+			$('.nav-wrap').addClass('fixed').css('top','0').next()
+			.css('padding-top','20px');
+	 
+			} else {
+	 
+			// when scroll up or less than aboveHeight,
+			//remove the fixed class, and the padding-top
+			$('.nav-wrap').removeClass('fixed').next()
+			.css('padding-top','20px');
+			}			
+		}); // close sticky NavBar effect
+	}); // close doc.ready
+		
+		
+		//----------------HOVER----------------//
+	    	function hover() {
+			
+			//for ORGS section. hover over, change opacity.
+			
+			//change cursor to pointer on hover
+			$(".square").css( 'cursor', 'pointer' );
+			
+			$(".square").css("opacity", .92);
+			$(".square").hover(function() {
+			
+				$(this).animate({opacity: 1.0}, 200);
+				}, function() {
+					$(this).animate({opacity: 0.92}, 200);
+					});
+			
+			
+			//for COMMUNITY section. hover over, change opacity, show description
+			$("#thecommunity .icon").css( 'cursor', 'pointer' );
+			$("#thecommunity .icon").css("opacity", .7);
+			
+			//iterate through each image, and apply hover effect to each of them
+			//including the animated opacity effect
+			var arr = ["1","2","3","4","5","6","7","8","9"];
+			jQuery.each(arr, function() {
+				var arrnum = this;
+				$("#image"+arrnum+".icon").hover(
+					function() {
+						$(this).css('background-image','url(images/members/p'+arrnum+'b.png)');
+						$(this).animate({opacity: 1.0}, 200);},
+					function() { 
+						$(this).css('background-image','url(images/members/p'+arrnum+'.png)');
+						$(this).animate({opacity: 0.7}, 200);
+						return (this != "9");
+						})
+			});
+		
+			
+			//for EVENTS section. hover over, change opacity
+			//change cursor to pointer on hover
+			$(".event-square").css( 'cursor', 'pointer' );
+			
+			//for events squares
+			$(".event-square").css("opacity", .7);
+			$(".event-square").hover(function() {
+			
+				$(this).animate({opacity: .9}, 200);
+				}, function() {
+					$(this).animate({opacity: 0.7}, 200);
+					});
+			
+			//for event buttons
+			$(".event-button").css( 'cursor', 'pointer' );
+			$(".event-button").css("opacity", .7);
+			$(".event-button").hover(function() {
+			
+				$(this).animate({opacity: 1}, 200);
+				}, function() {
+					$(this).animate({opacity: 0.7}, 200);
+					});
+			
+			//for event boxes
+			$(".eventBox").css("opacity", .7);
+			$(".eventBox").hover(function() {
+			
+				$(this).animate({opacity: 1}, 300);
+				}, function() {
+					$(this).animate({opacity: 0.7}, 300);
+					});
+	    } //close Hover method
+	    
+	    //----------------Image Rollover----------------//
+	    function bigArrow(icon) {
+		icon.style.height="100px";
+	    }
+	    
+	    function smallArrow(icon) {
+		icon.style.height="70px";
+	    }
+	    
+	    //-------Change NavBar State----------
+	    //change highlighted current page item
+	    //***********to be coded later
+	</script>
+      <!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
+</head>
+
+<body>
+	<!--Header includes splash image and slide show-->
+	<div id="header">	
+		<!-- SlidesJS Required: Start Slides -->
+		<!-- The container is used to define the width of the slideshow -->
+		<div class="slide_container" style="width: 100%;">
+			<div id="slides">
+				<img src="images/slideshow/slide1.jpg" alt="slide1">
+				<img src="images/slideshow/slide2.jpg" alt="slide2">
+				<img src="images/slideshow/slide3.jpg" alt="slide3">
+				<img src="images/slideshow/slide4.jpg" alt="slide4">
+				<img src="images/slideshow/slide5.png" alt="slide4">
+				<img src="images/slideshow/slide6.jpg" alt="slide4">
+				<img src="images/slideshow/slide7.jpg" alt="slide4">
+				<img src="images/slideshow/slide8.jpg" alt="slide4">
+			</div>
+		</div>
+		  <!-- End SlidesJS Required: Start Slides -->
+		
+	</div>
+
+	<!-- SlidesJS Required: Link to jquery.slides.js -->
+	<script src="js/jquery.slides.min.js"></script>
+	<!-- End SlidesJS Required -->
+
+	<!-- Run slideshow javascript-->
+	<script>
+		$(function() {
+			$('#slides').slidesjs({
+				height: 600,
+			});
+		});
+	</script>
+
+
+	<div class="nav-wrap">
+	
+		<img id="logo" src = "images/emwlogo.png" alt = "emwlogo">
+		<ul class="group" id="example-one">
+			
+				<li class="current_page_item">
+				<a href="#header" class="smoothScroll">Home</a>
+				</li>
+				<li><a href="#about" class="smoothScroll">About</a></li>
+				<li><a href="#events" class="smoothScroll">Events</a></li>
+				<li><a href="#thecommunity" class="smoothScroll">Community</a></li>
+				<li><a href="#orgs" class="smoothScroll">Organizations</a></li>
+				<li><a href="#contact" class="smoothScroll">Contact</a></li>
+		</ul>	
+        
+	</div>
+  
+  
+	<!-- fixed arrow to bring user back to top of page -->
+	<a href="#header" class="smoothScroll">
+	    <img id="uparrow" onmouseover="bigArrow(this)" onmouseout="smallArrow(this)" src="images/icons/UP_arrow.png" alt="up arrow" height="70">
+	</a>
+	<img id="arrow" src="images/icons/UP-arrow2.png" alt="arrow" height="50">
+	
+	
+	<div class= "wrapper">
+	
+		<div id="about">
+			<h1 style="padding-top: 100px; text-align: center; margin-bottom: 15px;">WHO WE ARE</h1>
+			<div style="font-size: 17px; font-weight: 100; text-align: center; padding-top: 0px; padding-bottom: 60px"><p>//
+			<strong>E</strong>xpanding imaginations. <strong>M</strong>aking dreams real. <strong>W</strong>riting our own history.
+			//</p></div>
+			
+			<br>
+				
+			<div class="center">
+				<div class="grid-wrap">
+					<div class="icon" id="art"></div>
+					<div class="grid1"><p><h2 style="text-align: center; margin-top: -10px; color: #FF1D7F;">ART</h2>
+					<p>Fostering and encouraging creative expression through all mediums.</p></div>
+				</div>
+				<div class="grid-wrap">
+					<div class="icon" id="tech"></div>
+					<div class="grid1"><h2 style="text-align: center; margin-top: -10px; color: #FF1D7F;">TECHNOLOGY</h2 >
+						<p>Providing a space for research and scientific innovation.</p></div>
+				</div>
+				<div class="grid-wrap">
+				<div class="icon" id="community"></div>
+				<div class="grid1"><h2 style="text-align: center; margin-top: -10px; color: #FF1D7F;">COMMUNITY</h2>
+					<p>Strengthening community through collaboration and mutual support.</p></div>
+				</div>
+			
+			</div> <!--close center-->
+		
+			<div  style="margin-top:350px">
+				<div class="center" style="text-align: justify; width: 75%">
+					<p style="text-align: justify;">
+					<h2 style="text-align: center; padding-bottom: 10px">Our Mission</h2>
+					 <p>EMW's mission is to establish a transformative space for individuals and communities to fulfill their creative potentials
+					 through organic collaboration and the remixing of science, technology, culture, music, and other art forms. Our activities
+					 will be rooted in a commitment to the promotion of innovative thought and interaction, sharing, giving, trust, and mutual
+					 support to expand the concept of family to our immediate community and the world - overcoming personal, socioeconomic,
+					 racial, and other barriers along the way.  </p>
+					<div class="left-align">
+						<h2>Our Values</h2>
+						<p style="text-align: justify;"> Our activities will be rooted in a commitment to sharing, giving, trust, mutual support
+						and respect to expand the concept of family to our immediate community and the world. </p><br>
+					</div>
+					<div class="right-align">
+						<h2 style="text-align: left">Our Approach</h2>
+						<p style="text-align: justify;">EMW will cultivate space for the organic collaboration and remixing of science, technology,
+						culture, music, and other art forms, allowing new modes of thinking and interaction to emerge.  We cultivate innovation by
+						serving as an incubator space for creative partner organizations that share our mission and core values. EMW engages and builds
+						community via grassroots initiatives, programming, and social events. </p> 
+					</div>
+				</div>
+			</div>
+		</div> <!--end ABOUT div-->
+		
+		<!--START events div-->
+		<div class="divider"></div>
+	
+		<div id="events">
+			<h1 style= "clear: both;text-align: center; margin-bottom: 20px;">UPCOMING EVENTS</h1>
+			<p style="text-align: center; font-size: 18px; line-height: 90%">
+				Check out what we have planned this month! <br> <span style="font-size: 13px;">
+				(Click on the event for the official event page.)</span></p>
+		    
+    
+			<div style= "margin-top: 20px;" id="events-timeline">
+		
+			<!--#include virtual="events.part" -->
+			
+			</div> <!--end event-timeline-->
+    
+	    
+			<!-- BUTTONS commented out for now-->
+			<!--<div id = "event_arrow" ><img class = "event-button" src="images/basic/left_arrow.png" alt="button1" /><img class = "event-button" src="images/basic/right_arrow.png" alt="button2" /></div>-->
+		
+			<br><h1 style= "clear: both;text-align: center; margin-bottom: 20px;">MONTHLY EVENTS</h1>
+			<p style="text-align: center; font-size: 18px; line-height: 90%">
+			Learn more about the events organized on the regular EMW! <br><span style="font-size: 14px">Read about the organizations that plan them in the sections
+			below.</span></p><br><br>
+		    
+			<div style="font-size: 14px; margin-left: auto; margin-right: auto; width: 70%">
+				<ul>
+					<li><strong>East Meets Words (BPAC)</strong> East Meets Words is the Boston Progress Arts Collective's monthly Open Mic series, going strong
+					for more than 8 years. It's the only monthly Asian American open mic series in all of New England, taking place the second Friday of every
+					month at East Meets West bookstore. A local institution since its inception in March 2005, all you need to participate is a voice or an ear.
+					Come by during an open mic and share some of your poems/songs/stories/soul.<br><br></li>
+					<li><strong>Storytellers Project (EMW)</strong> In a segregated world rife with stereotypes, misunderstanding, violence, and the tendency to
+					stigmatize the "other," we invite you to the Storytellers Project -- a community-building, education, and public art project conceived
+					by EMW.<br><br>The Storytellers Project is a monthly series of meals, shared in a circle, featuring four selected "storytellers" and twenty
+					listeners. Through storytelling and active listening, we aim to engage diverse members of our city in meaningful dialogue in an effort to
+					humanize the "other," forge new partnerships, and transform perspectives.<br><br>The storytellers are, in fact, ordinary human beings - the high
+					school kid you pass by on the T, the businessman rushing to his office downtown, the woman leaving the abortion clinic, the ex-inmate turned
+					organizer, the quiet poet, the college student, the LGBT activist, the struggling mother, the grieving father, the joyous newlywed. The
+					storyteller could, in fact, be you.<br> <br></li>
+					<li><strong>Make-it Market </strong>(EMW + Modkit)</li>
+					<li><strong>Subdrift Open Mic </strong>(Subdrift)</li>
+					<li><strong>Holiday Hack-a-thon </strong>(EMW + Modkit + Little Devices + Lifelong Kindergarten - *not monthly)</li>
+					<li><strong>Music Box </strong>(EMW & JazzThugs - *not monthly) </li>
+					<li><strong>EMW Gallery </strong>(EMW  - *quarterly)</li>
+				</ul>
+			</div>
+		</div> <!--END events div-->
+	    
+		<div class="divider"></div>
+		
+		<!--start COMMUNITY div-->
+		<div id="thecommunity" style="height: 1000px">
+			<br><br>
+			<h1 style= "text-align: center; margin-bottom: 20px;">MEET THE COMMUNITY</h1> <br>
+			<div class="center">
+				<div class="grid-wrap">
+					<div class="icon" id="image1"></div>
+					<div class="name"><p> Dave Kong EMW</p></div>
+					<address><a href="mailto:sunkong@gmail.com">
+						<img class="mail_to" alt="send an email" src="images/icons/email.png" width = "25">
+					</a></address>
+				</div>
+					
+				<div class="grid-wrap">
+					<div class="icon" id="image2"></div>
+					<div class="name"><p> Abel Cano EMW</p></div>
+					<address><a href="mailto:abelrcano@gmail.com">
+						<img class="mail_to" alt="send an email" src="images/icons/email.png" width = "25">
+					</a></address>
+				</div>
+				
+				<div class="grid-wrap">
+					<div class="icon" id="image3"></div>
+					<div class="name"><p> Catherine Fung BPAC</p></div>
+					<address><a href="mailto:catmin.fung@gmail.com">
+						<img class="mail_to" alt="send an email" src="images/icons/email.png" width = "25">
+					</a></address>
+				</div>
+				
+				<div class="grid-wrap">
+					<div class="icon" id="image4"></div>
+					<div class="name"><p> Leona Merk BPAC</p></div>
+					<address><a href="mailto:lualhati81387@yahoo.com">
+						<img class="mail_to" alt="send an email" src="images/icons/email.png" width = "25">
+					</a></address>
+				</div>
+				
+				<div class="grid-wrap">
+					<div class="icon" id="image5"></div>
+					<div class="name"><p> An Rong Xu EMW</p></div>
+					<address><a href="mailto:anrong@three-half.com">
+						<img class="mail_to" alt="send an email" src="images/icons/email.png" width = "25">
+					</a></address>
+				</div>
+				
+				<div class="grid-wrap">
+					<div class="icon" id="image6"></div>
+					<div class="name"><p> Jeffrey Cott BPAC</p></div>
+					<address><a href="mailto:jeffrito7@gmail.com">
+						<img class="mail_to" alt="send an email" src="images/icons/email.png" width = "25">
+					</a></address>
+				</div>
+				
+				<div class="grid-wrap">
+					<div class="icon" id="image7"></div>
+					<div class="name"><p> Zainab Syed BPAC</p></div>
+					<address><a href="mailto:nainasyed@gmail.com">
+						<img class="mail_to" alt="send an email" src="images/icons/email.png" width = "25">
+					</a></address>
+				</div>
+				
+				<div class="grid-wrap">
+					<div class="icon" id="image8"></div>
+					<div class="name"><p> Richard Lopez BPAC</p></div>
+					<address><a href="mailto:ralopez09@gmail.com">
+						<img class="mail_to" alt="send an email" src="images/icons/email.png" width = "25">
+					</a></address>
+				</div>
+				
+				<div class="grid-wrap">
+					<div class="icon" id="image9"></div>
+					<div class="name"><p> Payal Sharma BPAC</p></div>
+					<address><a href="mailto:payal.nccj@gmail.com">
+						<img class="mail_to" alt="send an email" src="images/icons/email.png" width = "25">
+					</a></address>
+				</div>
+			
+			
+			</div> <!--end center-->
+		</div> <!--end COMMUNITY div-->
+	    
+		<div class="divider"></div>
+		
+		<!--start ORGANIZATIONS div-->
+		<div id="orgs" style="height: 530px">
+			<h1 style= "text-align: center; margin-bottom: 5px;">ORGANIZATIONS</h1><br>
+			<div style="width: 100%">
+				<table>
+					<tr>
+						<td id="1"> <a href="#" class="basic">
+						<img class = "square" src="images/orgs/bpac_logo.png"
+						     alt = "image1" HEIGHT=150 WIDTH=150></a></td>
+						<td id="2"> <a href="#" class="basic">
+						<img class = "square" src="images/orgs/modkit_logo.png"
+						     alt = "image2" HEIGHT=150 WIDTH=150></a></td>
+						<td id="3"> <a href="#" class="basic">
+						<img class = "square" src="images/orgs/littledevices_logo.png"
+						     alt = "image3" HEIGHT=150 WIDTH=150></a></td>
+					</tr>
+					
+					<tr>
+						<td id="4"> <a href="#" class="basic">
+						<img  class = "square" src="images/orgs/subdrift_logo.png"  alt = "image4" HEIGHT=150 WIDTH=150></a></td>
+						<td id="5"> <a href="#" class="basic">
+						<img  class = "square" src="images/orgs/bkstudio_logo.png"  alt = "image5" HEIGHT=150 WIDTH=150></a></td>
+						<td id="6"> <a href="#" class="basic">
+						<img  class = "square" src="images/orgs/fellows_logo.png"  alt = "image6" HEIGHT=150 WIDTH=150></a></td>
+					</tr>
+				</table>
+			</div> <!--end table-->
+		
+			<!-- modal content -->
+			<div id="BPAC_modal" class = "basic-modal-content">
+				
+				<img src= "images/orgs/bpac.jpg" alt="BPAC">
+				<h1>BPAC</h1>
+				<p><span class="caption">
+				Boston Progress Arts Collective is a community of API*
+				artists that aims to create a supportive space and
+				outlet for personal growth, creative expression, and
+				artistic exploration. We strive to use art as an active
+				means for mobilization and education within our
+				communities locally, nationally, and beyond.
+				Local API* writers, visual artists, and performers have
+				never had access to resources specifically for them.
+				There needs to be a strong network of API* artists to
+				constantly remind our communities the importance of
+				arts in enriching our lives, finding our voices, and
+				realizing our strength. Boston Progress Arts Collective
+				provides a place for APA artists to support each other
+				and to bring new and progressive ideas back to our own
+				communities.
+				<br>
+				<a href="https://www.facebook.com/bostonprogress/"
+				   class="caption">BPAC Website</a>
+				</span></p>	
+			</div>
+			
+			<div id="modkit_modal" class = "basic-modal-content">
+				
+				<img src= "images/orgs/modkit.jpg" alt="BPAC">
+				<h1>Modkit</h1>
+				<p><span class="caption"><br>Vision: Democratization of
+				programming and engineering. We see a world where
+				everybody will be able to use programming and
+				engineering to solve problems, express themselves,
+				have fun, share knowledge, and ultimately improve
+				their lives. Toward that vision, we develop tools that
+				make programming and engineering visual, browser-based,
+				social and fun.
+				<br>
+				<a href="http://www.modk.it/about"
+				   class="caption">Modk.it Website</a>
+				</span></p>
+			</div>
+			
+			<div id="subdrift_modal" class = "basic-modal-content">
+				
+				<img src= "images/orgs/subdrift.jpg" alt="BPAC">
+				<h1>Sub Drift</h1>
+				<p><span class="caption"><br>Subcontinental Drift started
+				in 2007 in Washington DC. Since that, it has grown to
+				become a collection of communities across the United
+				States including groups in DC, Chicago, NYC and SF.
+				Our mission is to build a supportive community that
+				fosters creative expression and collaboration among
+				Boston-based South Asians. Our main platform will be
+				regular open mic nights but we're hoping to grow the
+				community through other events as well.
+				<br><br>
+				<a href="https://www.facebook.com/groups/subdriftboston/"
+				   class="caption">Sub Drift Website</a>
+				</span></p>
+			</div>
+			
+			<div id="lildevices_modal" class = "basic-modal-content">
+				
+				<img src= "images/orgs/littledevices.jpg" alt="BPAC">
+				<h1>Little Devices</h1>
+				<p><span class="caption"><br>The Little Devices group at MIT develops
+				empowerment technologies for health. We believe that innovation and
+				design happens at the frontline of healthcare where providers and patients can
+				invent everyday technologies to improve outcomes. By comparing the adaptive
+				technology index of a given burden of disease, we can select promising devices
+				that can have an impact on a particular disease. The resulting research portfolio
+				is then matched with specific strategies for participatory design.
+				<br><br>
+				<a href="http://littledevices.org"
+				   class="caption">Little Devices Website</a>
+				</span></p>
+			</div>
+			
+			<div id="bkstudio_modal" class = "basic-modal-content">
+				
+				<img src= "images/orgs/bkstudio.jpg" alt="BPAC">
+				<h1>Bookstore Studios</h1>
+				<p><span class="caption"><br>
+				The Little Devices group at MIT develops
+				empowerment technologies for health. We believe that innovation and
+				design happens at the frontline of healthcare where providers and patients can
+				invent everyday technologies to improve outcomes. By comparing the adaptive
+				technology index of a given burden of disease, we can select promising devices
+				that can have an impact on a particular disease. The resulting research portfolio
+				is then matched with specific strategies for participatory design. 
+				</span></p>
+			</div>
+			
+			<div id="fellows_modal" class = "basic-modal-content">
+				<!--<img src= "images/fellows_program.jpg" alt="BPAC">-->
+				<h1>EMW Summer Fellows Program</h1>
+				<p><span class="caption"><br>We're working on it. Find us
+				on <a href="http://facebook.com/emwbookstore" style="text-decoration: underline">Facebook</a> for updates!
+				</span></p>
+			</div>			
+			
+			
+			<!--script for modal eventHandlers
+			each box image has a clickhandler-->
+			<script>
+				$('#1 .basic').click(function (e) {
+					$('#BPAC_modal').modal();
+					return false;
+				});
+				$('#2 .basic').click(function (e) {
+					$('#modkit_modal').modal();
+					return false;
+				});
+				
+				$('#3 .basic').click(function (e) {
+					$('#lildevices_modal').modal();
+					return false;
+				});
+				$('#4 .basic').click(function (e) {
+					$('#subdrift_modal').modal();
+					return false;
+				});
+				$('#5 .basic').click(function (e) {
+					$('#bkstudio_modal').modal();
+					return false;
+				});
+				$('#6 .basic').click(function (e) {
+					$('#fellows_modal').modal();
+					return false;
+				});
+			</script>
+		
+			<div class = "left-align2">
+				<p style="font-size: 17px;">
+				   Our space is a collaborative community. EMW is excited to partner with these awesome organizations. <br>Check out who they are and learn more about what they're doing!
+				</p>
+			</div> <!--end LEFT-ALIGN div-->	
+			
+		</div> <!--end ORGS div-->
+		
+		<div class="divider"></div>
+		
+		<!--start CONTACT div-->
+		<div id="contact" style="padding-top: 100px; height: 500px;">
+			
+			<h1 style="text-align: center; font-size: 45px">CONTACT US</h1>
+			
+			<div class="icon_small" id="mail"></div>
+			
+			<div style="padding-top: 50px; padding-bottom: 50px;font-size: 20px; text-align: center; ">
+				<p>Have a question? Shoot us a quick message and we will get back to you shortly!</p><br>
+				
+				<div style="width: 85%; display: block;border-top: double;margin-left: auto; margin-right: auto"></div>
+			
+			</div>
+		
+			<div id="emw_location" style="float: left; text-align: center;">
+				<h1>Our Location</h1>
+				<p style="font-size: 16px"> 934 Massachusetts Ave. <br> Cambridge, MA 02139 </p><br>
+				<iframe 
+					src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=934+Massachusetts+Avenue,+Cambridge,+MA&amp;aq=0&amp;oq=934+mass&amp;sll=42.299527,-71.278428&amp;sspn=0.076307,0.04446&amp;ie=UTF8&amp;hq=&amp;hnear=934+Massachusetts+Ave,+Cambridge,+Middlesex,+Massachusetts+02139&amp;t=m&amp;ll=42.375729,-71.107464&amp;spn=0.019022,0.025749&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br/><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=934+Massachusetts+Avenue,+Cambridge,+MA&amp;aq=0&amp;oq=934+mass&amp;sll=42.299527,-71.278428&amp;sspn=0.076307,0.04446&amp;ie=UTF8&amp;hq=&amp;hnear=934+Massachusetts+Ave,+Cambridge,+Middlesex,+Massachusetts+02139&amp;t=m&amp;ll=42.375729,-71.107464&amp;spn=0.019022,0.025749&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+			</div> <!--end LOCATION div-->
+	
+			<h1  style="text-align: center;">Get in Touch</h1><br><br>
+			<div class= "form" style="padding-left: 20px;float: left;">
+			    
+				<form name="my_data" method="post" action="/cgi-bin/eform.cgi">
+					<input type="text" name="full_name" class="required" placeholder="Name">
+					<input type="text" name="email" class="required" placeholder="Email Address">
+					<textarea rows="5" cols="40" name="comments" placeholder="Your message"></textarea>
+					<input type="submit" value="Submit form">
+					<input type="reset">
+					<input type="hidden" name="_recipient" value="slee13@wellesley.edu">
+				</form>
+			</div> <!--end FORM div-->
+			
+			<!--placeholder text in form inputs for firefox and IE browsers-->
+			<script>
+				    $('#fullname').placeHeld();
+				    $('#email').placeHeld();
+				    $('#comments').placeHeld();
+			</script>
+		</div> <!--end CONTACT div-->
+		
+	</div> <!--end WRAPPER div-->
+	
+	<!-- Footer -->
+	<div id="footer">
+		<p><a href="http://www.facebook.com/emwbookstore">fb</a> -
+		<a href="http://www.emwbookstore.com/blog">blog</a> -
+		<a href="http://youtube.com/emwbookstore">youtube</a> | EMW: ARTS TECHNOLOGY & COMMUNITY | &copy; 2013 Neue Cooperative
+		</p> 
+	</div>
+	
+	<!--additional scripts needed to be run at the end of the DOM
+	script to initialize the magic line effect in nav bar-->
+	<script src='js/example.js'></script>
+	
+	
+</body>
+</html>

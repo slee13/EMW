@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<!--FILE NAME: P3_changes.html 
+    WRITTEN BY: Annie Han, Steph Lee
+    DATE: 29 April 2013-->
+<html>
+    <head>
+        <title>Project Design Changes</title>
+        <meta charset="utf-8">
+        <style>
+        	h1,h2,h3,h4 {
+        	font-family: sans-serif;
+        	}
+        </style>
+    </head>
+    
+    <body>
+	<div style="text-align: center">
+	<p> CS110 Final Project // Changes Documentation<br>Annie Han & Stephanie Lee <br>
+	Our <a href="../index.shtml">website</a></p>
+	</div>
+        <h2>Navigation Structure</h2>
+	
+        <ul>
+	    <li>We are using a main "images" folder for all images, and categorizing within
+	    that folder (see structure below).</li>
+	    
+	    <li>After speaking to our client, we decided not to have an archive. This is
+	    because the Events section of the website will be focused on the main upcoming
+	    events (photo and short description) and information about monthly/ongoing events.
+	    For more details, the website will direct people to Facebook for upcoming events
+	    and the EMW blog for more details and past events. Therefore, we do not need
+	    archive.shtml or event_info.shtml.</li>
+
+	    <li>Information about the EMW Summer Fellows program at EMW has not been released
+	    yet, and there are no current summer fellows. Therefore, the pages have temporary
+	    content and no images.</li>
+	    
+	    <li>We added an events.part file so that upcoming events can be updated easily on
+	    a monthly basis.</li>
+	</ul>
+        
+        <h2>Requirements</h2>
+        <ul>
+	    <li>We used the jQuery animate effect to switch images on hover in the Community
+	    section, and to change the opacity in the Events and Organization section. </li>
+	    <li>We also used a JavaScript onmouseout Event on a fixed triangle on the bottom
+	    right corner to switch to a larger fixed triangle that takes the user to the top
+	    (Home page) when clicked. </li>
+	    <li>Date objects were not used as users adding events directly to the site was not a
+	    feature that the client needed.</li>
+	
+	</ul>
+        
+        <h2>Page Layout & Appearance</h2>
+        <p>Social media links (instead of icons) are now on the bottom footer bar. We decided only
+	to add Youtube, and not include twitter, Flickr, Tumblr, or Instagram links since they either
+	are not active or have not been created yet.</p>
+	<p>Instead of using icons, we used text in the navigation bar since we wanted
+	the EMW logo to stand out.</p>
+	<p>Our website follows a smooth "infinite scrolling" theme, and is now a fixed layout.</p> 
+	<p>Instead of the font Avenir, we used the Google Webfonts. We used "Oswald" as display text
+	for h1, h2, and h3 and "Source Sans Pro" at 12px for main text. The accent colors were changed
+	to match the logo colors blue (#00BFFF) and pink (#FF1D7F). <br></p>
+	
+	<p>The files are now organized as follows:</p>
+	<h4>Organizational Structure:</h4>
+	<pre>
+		index.shtml
+		style.css
+		events.part 
+		/images
+		    /members
+			(1 colored and 1 black & white headshot per person)
+		    /orgs
+			(1 logo and 1 photo per organization)
+		    /icons
+			(for basic buttons and icons)
+		    /slideshow
+			(all images for homepage slideshow)
+		    emwlogo.png
+		/js
+		    (location for all javascript files)
+		/Documents
+		    P3_changes.html
+		    readMe.txt
+	</pre>
+	
+	<h2>Tasks</h2>
+	<p> In an effort to be flexible and promote creativity in the design of the website, we decided
+	to go with a single page website. Today, having webpages with more content is not as much of a
+	problem as in the past and therefore provides designers with the opportunity to display connected
+	information and sections of the website in a more logical way.</p>
+	<p>To split up the task of creating one index.html page, we treated each page fragment as if it were its
+	own separate page.  The main sections are still the same as our initial design proposal except for the archive
+	page and event_info page.  In replacement of these two sections we now have a section on the location of EMW as well
+	as 6 additional modals/page segments that are descriptions of the individual organizations that make up EMW.</p>
+	<h4>HTML & CSS Breakdown</h4>
+	<ul>
+	    <li>Home Section: Annie</li>
+	    <li>About Section: Annie</li>
+	    <li>Events Section: Annie</li>
+	    <li>Community Section: Steph</li>
+	    <li>Organizations Section: Steph</li>
+	    <li>Contact Section: Steph</li>
+	    <li><strong>Location Section: Annie</strong></li>
+	    <li><strong>Organization Details Section: Steph</strong></li>
+	</ul>
+
+	<h4>JS and jQuery Breakdown</h4>
+	<ul>
+	    <li>Slideshow: Annie</li>
+	    <li>Hover opacity effect: Annie</li>
+	    <li>Hover switch images: Steph and Annie</li>
+	    <li>Form validation: Steph</li>
+	    <li>onmouseover/onmouseout event: Steph</li>
+	    <li>Integration of plugins: Steph and Annie</li>
+	    <li>Editing plugins: Steph and Annie</li>
+	</ul>
+	
+	<h2>Modulation and Artwork</h2>
+	<p>
+	    Modulation was tackled with both javascript functions and SSI.  Javascript functions were
+	    used to write repeating jQuery code for repetitious parts of the html.  For example, using a
+	    javascript method to apply the hover method to work on all nine icons of the community members.
+	    This was done by Stephanie.  <br> Stephanie also used SSI for the upcoming events section of the
+	    website, mostly to make it easier for future maintainers of the website since this will be the
+	    most regularly and frequently updated. 
+	</p>
+	<p>
+	    Artwork creation was directed by Annie.  She handled digital mockups and design direction.  All
+	    banners, icons, images, and buttons were made by both Steph and Annie.
+	</p>
+	
+	<h2><a href="../index.shtml">EMW Website Beta Version 1.0</a></h2>
+    </body>
+		
+</html>

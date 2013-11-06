@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!--FILE NAME: p2.html 
+    WRITTEN BY: Annie Han, Steph Lee
+    DATE: 14 March 2013-->
+<html>
+    <head>
+        <title>Project Design</title>
+        <link rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+        <style>
+        	h1,h2,h3,h4 {
+        	font-family: sans-serif;
+        	}
+        </style>
+    </head>
+    
+    <body>
+        <h2>Administrative Details</h2>
+        <p>Our client is EMW, an artist community that organizes events at a bookstore called 
+        East Meets West located in Cambridge, MA. We are working most directly with Dave
+        Kong, Director and Abel Cano, Associate Director of EMW.</p>
+        
+        <h2>Location and Maintenance</h2>
+        <ul>
+            <li> Server: Wordpress.org</li>
+            <li> Future maintenance of site: Members of the EMW Community</li>
+        </ul>
+        
+        <h2>Purpose and Goals</h2>
+        <p>As the bookstore space is being renovated, <strong>EMW would like the 
+        website to inform the Boston community about new spaces, ideas, partnerships,
+        and events.</strong>
+        
+        The <strong>goal</strong> of the website is to have a complete rebranding 
+        of EMW as a non-profit arts, technology, and community space.
+        
+        This will be  will be accomplished by having the website serve as a portal
+        into other communities involved with EMW. </p>
+		
+		<h3>Intended User/Audience</h3>
+        
+        <p>This website will serve the community, both members and non-members.</p>
+        <p><strong>User Type 1:</strong> As a member of the EMW community, this 
+        website serves as a portal to keep him/her plugged in with the current and upcoming
+        events and projects. This website will bring all EMW-related 
+        sites/blogs/components into one place, creating a visual community space 
+        online. </p>
+        
+        <p><strong>User Type 2:</strong> As a non-member of the EMW community, 
+        this website enlightens the curious user to "What is EMW?". It is important
+        that the user leaves the website understanding what the mission of EMW is 
+        and what it aims to accomplish.  The events, programs, and connected organizations
+        will be laid out so that any outside member can find out the when and what 
+        events that they might attend. The user should leave with both a sense of 
+        what drives EMW as an organization and what brings them together as a community. 
+        The user should have the necessary information to get plugged into EMW by 
+        either attending upcoming events and/or reaching out to established members
+        by signing up for the mailing list .
+        </div>
+
+
+		<h3>Design Goals</h3>
+		<p> The purpose of this website is represent the message and vibe of EMW 
+		as a community space for collaboration and innovation. Thus, the design of 
+		the EMW website should have a similar vibe: approachable and simple, yet 
+		creative, interactive, and innovative.  In order to achieve this, the 
+		design layout will be minimalistic, user-friendly, and easily navigable. 
+		The color scheme will be colorful and eye-catching, similar to the EMW 
+		logo. Since upcoming events are a main focus, event flyers and images will 
+		be a focal point and background colors will be white or neutral. We will 
+		be using appropriate colors for easy readability and brighter colors for 
+		accents. 
+		</p>
+
+		<h2> Plan: Tasks & Deadlines </h2>
+
+		<p> 
+		The overall planning structure is to first have digital mock-up prepared 
+		by 03/24.  Next we will aggregate and input all necessary textual content 
+		and to complete basic HTML, css, and JavaScript coding/debugging by April 
+		10. After we will work on intensive design and more advanced 
+		JavaScript/jQuery/animations until April 29. Images and GIFs needed for 
+		design will be worked on throughout both periods.  Any additional backend 
+		features will be documented, but not prioritized, unless all other required 
+		functionalities are tested and working by the project deadline. More specific 
+		deadlines are covered in the section on Organizational Structure.
+		</p>
+		
+		<p>
+		The files will be organized using the following folder structure and file 
+		names. </p>
+		
+		<p>
+		<strong>home.shtml</strong> - The home page will include a photo-splash slideshow 
+		of recent events (event1.jpg, event2.jpg, etc) and the flier for the upcoming open 
+		mic event (openmic_date.jpg). This means that the slideshow photos will 
+		have to be updated at the beginning of every month. <br>
+		<strong>about.shtml</strong> - The About page will include a collection of GIFs, which we 
+		will create using our own illustrations (arts.gif, technology.gif, 
+		community.gif from the /about folder) that defines the three characteristics 
+		the EMW space: Art, Technology, and Community. There will also be brief 
+		descriptions for history, mission, and goals. <br>
+		<strong>people.shtml</strong> - This page will have headshot images of each member in EMW 
+		(from the /people/members folder). These headshots and textual information 
+		about the members (name, who they are, their specific involvement in EMW) 
+		will be provided by the client. <br>
+		<strong>orgs.shtml</strong> - This page is a portal for EMW’s partner organizations. 
+		Currently, they are: BPAC, ModKit, Little Devices, Subdrift. Their organizations will 
+		be represented on the page in a grid format with their logos (under the 
+		/orgs folder). Once the user selects the logo, they can see all the 
+		information about the organization and how they’ve collaborated with EMW 
+		and for more information, they can be directed to the organizations’ personal 
+		web pages. <br>
+		<strong>events.shtml</strong> - A more readable and comprehensive page of upcoming events 
+		and programs for the user to scroll through. The information includes 
+		very basic information such as: event title, date, and location.  It will 
+		also have a fixed section on the main recurring programs at EMW, describing 
+		what the program is, its purpose in the space, and the organizations that 
+		run the program. <br>
+		<strong>event_info.shtml</strong> - The page will have more detailed information on each 
+		specific event.  There will be many event_info.shtml pages, one for each 
+		new event. <br>
+		<strong>archive.shtml</strong> - This is a page that is a collection of all past events and 
+		programs in a condensed grid format, using the event images as thumbnails. 
+		Clicking on the thumbnail will take you to the selected event page. These 
+		will be sorted by date from most recent on top. <br>
+		<strong>contact.shtml</strong> - The contact page contains a contact form, which provides 
+		options for space requests, or sending any questions or concerns. It also 
+		has a form for signing up to be a part of the EMW mailing list. 
+
+		</p>
+
+
+
+		<h2>Navigation Structure</h2>
+
+		<p>The navigation structure is a combination of a clique and a network. 
+		The main pages are all connected with each other via a navigation bar but 
+		there exist specific subpages that can only be accessed through a limited number 
+		of routes.
+		The webpage will have a fixed navigation bar at the top of the page, visible and 
+		accessible from all subpages. Every main page: home, about, people, orgs, events and 
+		contact will be linked to each other.  Past events and specific information on events 
+		will be subpages only accessible either directly from upcoming events on the homepage 
+		or through links located on the events page and archive of all upcoming and past 
+		events. The archive page will only be accessible via the events page.
+		</p>
+
+		<h3>Organizational Structure:</h3>
+		<pre>
+		home.shtml (Steph, 03/29)
+		/home
+			event1.jpg (Steph, 03/29)
+			event2.jpg (Steph, 03/29)
+			event3.jpg (Steph, 03/29)
+			openmic_date.jpg (Steph, 03/29)
+		about.shtml (Annie, 03/29)
+		/about
+			technology.gif (Annie 04/10)
+			arts.gif (Steph 04/10)
+			community.gif (Annie 04/10) 
+		people.shtml (Steph, 04/05)
+		/people
+			/members (Provided by Client by 04/24)
+				dave.jpg
+				abel.jpg
+				monique.jpg
+				catherine.jpg
+				zahra.jpg
+				stacy.jpg
+				jen.jpg
+				anrong.jpg
+				annie.jpg
+				steph.jpg
+			/fellows
+				summerfellow1.jpg
+				summerfellow2.jpg
+		orgs.shtml (Annie, 04/05)
+		contact.shtml (Steph, 04/10)
+		archive.shtml (Annie, 04/10)
+		events.shtml (Steph, 04/10)
+		event_info.shtml (Steph, 04/10)
+		/events (Done)
+			flier1.jpg
+			flier 2.jpg
+			flier 3.jpg
+			...etc
+			/programs
+				open_mic.jpg
+				human_project.jpg
+				music_box.jpg
+				market.jpg
+		emw.css (StephAnnie, 04/15)
+			avenir.otf
+		nav.part (Steph, 04/03)
+		social_media.part (Annie, 04/03)
+		mailing_list_signup.part (Annie, 04/03)
+		/images	
+			/logos
+				bpac.jpg (Done)
+				modkit.jpg (Done)
+				littledevices.jpg (Done)
+				subdrift.jpg (Done)
+				emwlogo.jpg (StephAnnie, 03/19)
+			/nav_buttons
+				home.png (Steph, 03/27)
+				about.png (Steph, 03/27)
+				people.png (Steph, 03/27)
+				orgs.png (Steph, 03/27)
+				contact.png (Steph, 03/27)
+				social_feed.png (Steph, 03/27)
+				archive.png (Steph, 03/27)
+			/icons
+				twitter.png (Annie, 03/22)
+				wordpress.png (Annie, 03/22)
+				facebook.png (Annie, 03/22)
+				tumblr.png (Annie, 03/22)
+				flickr.png (Annie, 03/22)
+				instagram.png(Annie, 03/22)
+		/scripts (StephAnnie 04/26)
+			(location for possible supplementary javascripts)
+		</pre>
+
+		<h2>Minimum Requirements</h2>
+		<p>
+		This website will contain animations, a contact form validation, calendar and 
+		date manipulations, rollovers, and slideshows. The animations will be used 
+		on the About page to dynamically illustrate what EMW is about and the 
+		elements that make it into an organization. Specific images will be 
+		manipulations of the logo (arts.gif, technology.gif, community.gif). 
+		(Stephanie and Annie will work jointly on concept design and split up the 
+		execution evenly).
+		The contact form available on the contact page will use JavaScript to 
+		validate the entered email address and check to see if any fields are empty 
+		(Annie). 
+		The Date object will be used to timestamp every event that is posted on the 
+		website for use when the events are placed into the archive. This will 
+		allow for easier and more accessible browsing of past events (Stephanie).
+		We will use JavaScript to make the links in the navigation bar change states 
+		when the mouse hovers over the link area (Annie).
+		We will use jQuery’s animate method and JavaScript to create expanding boxes 
+		that will animate with a mouse action for more information on community 
+		members and organizations (Stephanie).
+		Lastly, we will use jQuery and JavaScript to create a slideshow of images 
+		of upcoming events on the main homepage (Stephanie and Annie). 
+		Additional open source JavaScripts that we may utilize will be for scrolling 
+		and transitioning effects. 
+		</p>
+
+		<h2>Page Layout and Appearance</h2>
+		<p>This website will be designed to be dynamic and eye-catching and 
+		therefore, will have less structural consistency throughout all the pages 
+		and more focus on a design appropriate layout for the content.  We plan on 
+		using design elements based on the client’s new EMW logo and color scheme. 
+		Every page will share this common color scheme along with a fixed 
+		navigation bar positioned at the top center.  The EMW logo will appear on 
+		the top left corner above the navigation bar. There will be icons to 
+		direct people to social media pages and a form for signing up for the 
+		Mailing List at the bottom of each page.
+		The Home page will be the most visual-heavy, simple page with an image 
+		slideshow taking up 80% of the page real estate. All other pages will 
+		utilize a dynamic “hide and reveal” of information type theme along with 
+		standard vertical scrolling. 
+		The website will be left aligned and follow the liquid layout.
+		The main text will be dark grey at 12pt, Avenir-regular. All other text will 
+		be stylized as appropriate (navigation bar will be Avenir-medium). We will 
+		embed this downloaded font into the CSS file. The alternative is font-
+		family: sans-serif. 
+		Accent colors will be: #FFC000, #35COCD, #EC0033
+		</p>
+		</body>
+		
+</html>

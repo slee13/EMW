@@ -1,0 +1,66 @@
+                                
+				<!--Event order should be most recent to oldest, top to bottom.
+				Only change the href in the a tag with the url of the event page, the 
+				date in the h2 tags and the description. Upload event images to
+				specified folder with specified image filename.-->
+				
+				
+				<a href="https://www.facebook.com/events/445192125568469/">
+					<div>
+						<div class="eventBox">
+							<div class="thumb">
+								<img src="images/events/event1.png" alt="openmic">
+							</div>
+							<h2> APRIL 12 </h2><p class="eventText"><strong>[BPAC Presents]<br>
+							Open Mic ft. Ikuma Matsuda </strong> <br>Ikuma is a Berklee-trained guitarist and
+							composer for The Ikuma Matsuda Band. The newly formed group draws influence from Neo-soul
+							and hip hop roots. Come by during an open mic and share some of your poems / songs / stories / soul. </p>
+						</div>
+					</div>
+				</a>
+		    
+				<a href="http://goo.gl/887pQ">
+					<div class="eventBox">
+						<div class="thumb">
+							<img src="images/events/event2.png" alt="humanproj">
+						</div>
+						<div >
+							<h2> MARCH 29 </h2><p class="eventText"><strong>EMW Presents: <br>
+							The Storytellers Project</strong> <br>In a segregated world rife with
+							stereotypes, misunderstanding, violence, and the tendency to stigmatize
+							the "other," we invite you to the Storytellers Project - a community
+							building, education, and public art project conceived by EMW. </p>
+						</div>
+					</div>
+				</a>
+				
+				<a href="https://www.facebook.com/events/259018074233959/">
+					<div class="eventBox">
+						<div class="thumb">
+							<img src="images/events/event3.png" alt="talk">
+						</div>
+						<div>
+							<h2> MARCH 25 </h2><p  class="eventText"><strong>EMW Presents: <br>
+							Artist Talk with Jon Lee & Cindy Liang</strong> <br>Come join us for
+							our first installment of our artist talk with graphic designers, Jon Lee
+							and Cindy Liang. They will be discussing their respective projects and
+							engaging in dialog about new endeavors!</p>
+						</div>
+					</div>
+				</a>
+					
+				<a href="https://www.facebook.com/events/432938923455732/">
+					<div class="eventBox">
+						<div class="thumb">
+							<img src="images/events/event4.png" alt="gallery">
+						</div>
+						<div>
+							<h2>MARCH 24 </h2><p  class="eventText"><strong>
+							EMW Gallery - Opening Reception</strong> <br>EMW Gallery is proud
+							to announce it's inaugural show, Our American Life, in a newly
+							renovated space dedicated to the living history and culture of our
+							highly creative Asian-American community. Come join us in celebrating
+							the works of eleven artists. </p>
+						</div>
+					</div>
+				</a>
